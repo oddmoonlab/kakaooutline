@@ -69,9 +69,8 @@ header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
 h1{font-family:var(--f-display);font-weight:400;font-size:28px;margin:0;letter-spacing:.01em;text-wrap:balance}
 h1 span{color:var(--accent)}
 .brand{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.student-only-notice{display:flex;align-items:flex-start;gap:10px;padding:12px 16px;background:#fff8e6;border:1.5px solid #f0c64a;border-radius:14px;color:#5a4300;font-size:14px;line-height:1.6;word-break:keep-all}
-.student-only-notice .sn-icon{font-size:16px;line-height:1.45;flex-shrink:0}
-.student-only-notice b{font-weight:600;color:#3d2e00}
+.student-only-notice{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;width:auto;max-width:100%;box-sizing:border-box;margin:0;padding:5px 14px;background:#fdf6dc;border:1px solid #ecd27a;border-radius:999px;color:#4a3d10;font-size:13px;font-weight:400;line-height:1.5;word-break:keep-all}
+.student-only-notice .sn-icon{font-size:12px;line-height:1;flex-shrink:0}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .student-only-notice{background:#3a3110;border-color:#8a6d16;color:#f3dc9a}:root:not([data-theme="light"]) .student-only-notice b{color:#ffe9a8}}
 :root[data-theme="dark"] .student-only-notice{background:#3a3110;border-color:#8a6d16;color:#f3dc9a}
 :root[data-theme="dark"] .student-only-notice b{color:#ffe9a8}
@@ -174,10 +173,7 @@ kbd{font:500 11px var(--f-num);border:1px solid var(--line);border-bottom-width:
     </div>
   </header>
 
-  <div class="student-only-notice" role="note">
-    <span class="sn-icon">⚠️</span>
-    <span><b>수강생 전용 페이지예요.</b> 이 주소를 다른 사람에게 공유하거나 SNS·카페 등에 올리지 마세요.</span>
-  </div>
+  <div class="student-only-notice" role="note"><span class="sn-icon">⚠️</span><span>수강생 전용 페이지예요. 이 주소를 다른 사람에게 공유하거나 SNS·카페 등에 올리지 마세요.</span></div>
 
   <div class="grid">
     <div class="stage bg-sky" id="stage">
