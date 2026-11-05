@@ -1,4 +1,35 @@
 <!DOCTYPE html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>KAKAO OUTLINE</title></head><body>
+<!-- ═══ ODDMOON LAB 카카오 작업실 연결: ← BACK 버튼 + 관리자 잠금 확인 ═══
+     MENU_ID : 카카오 작업실 관리자 패널의 메뉴 이름 (kakao-plan / kakao-outline)
+     꺼져 있으면 "아직 열리지 않았어요" 화면이 뜨고, 4초마다 다시 확인해요.
+     연결이 안 되면(인터넷 오류 등) 수업이 막히지 않게 그냥 열어 둬요. -->
+<style>
+.wrap>header{padding-right:120px}
+#om-back{position:fixed;top:12px;right:14px;z-index:9000;display:inline-flex;align-items:center;gap:6px;background:#141412;color:#fff;text-decoration:none;font:800 14px/1 Inter,'Noto Sans KR',-apple-system,sans-serif;letter-spacing:1px;padding:11px 18px;border-radius:999px;box-shadow:0 3px 14px rgba(0,0,0,.22);-webkit-tap-highlight-color:transparent}
+#om-back:active{transform:scale(.96)}
+#om-locked{position:fixed;inset:0;z-index:8999;background:#f7f6f3;display:none;place-items:center;text-align:center;padding:30px;font-family:Inter,'Noto Sans KR',-apple-system,sans-serif;color:#141412}
+#om-locked b{display:block;font-size:24px;font-weight:900;margin-bottom:8px}
+#om-locked span{font-size:14px;color:#5c5b58}
+</style>
+<a id="om-back" href="/kakao/">← BACK</a>
+<div id="om-locked"><div><b>🔒 아직 열리지 않았어요</b><span>선생님이 수업 시간에 열어 드려요.</span></div></div>
+<script>
+(function(){
+  var MENU_ID = 'kakao-outline';
+  var URL_ = 'https://kgjbxhxknxgbmsihvshe.supabase.co', KEY = 'sb_publishable_1K_wet7KC7fq7aPn6vB5dQ_nldPYACn';
+  function check(){
+    fetch(URL_ + '/rest/v1/menu_state?select=is_open&id=eq.' + MENU_ID, { headers: { apikey: KEY, Authorization: 'Bearer ' + KEY } })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(rows){ var open = !(rows && rows[0] && rows[0].is_open === false);
+        document.getElementById('om-locked').style.display = open ? 'none' : 'grid'; })
+      .catch(function(){});
+  }
+  check(); setInterval(check, 4000);
+})();
+</script>
+<!-- ═══ 카카오 작업실 연결 끝 ═══ -->
+
+
 <!-- © 2026 ODDMOON LAB · 유여진 강사. All rights reserved. 무단 복제·수정·재배포 금지. -->
 <style>
 body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
